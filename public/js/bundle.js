@@ -7,8 +7,9 @@ var TweetsApp = require('./components/TweetsApp.react');
 // Snag the initial state that was passed from the server side
 var initialState = JSON.parse(document.getElementById('initial-state').innerHTML)
 console.log(initialState);
-initialstate = 
-    tweet = {active: true, avatar:'ok', screenname:'poofytoo', body:'hello this is tweet', author:'victor'}
+tweet = {active: true, avatar:'ok', screenname:'poofytoo', body:'hello this is tweet', author:'victor'}
+tweets = [tweet];
+initialstate = tweets;
 
 // Render the components, picking up where react left off on the server
 React.render(
@@ -49,8 +50,9 @@ module.exports = TweetsApp = React.createClass({displayName: 'TweetsApp',
 
   // Render the component
   render: function(){
+    console.log('rendering', tweets)
     return (
-      React.DOM.div({className: "tweets-app"}, 
+      React.DOM.div({className: "this.state.tweets"}, 
         Tweets({tweets: this.state.tweets})
       )
     )
@@ -64,6 +66,7 @@ var React = require('react');
 
 module.exports = Tweet = React.createClass({displayName: 'Tweet',
   render: function(){
+    console.log('rendering tweet', this.props);
     var tweet = this.props.tweet;
     return (
       React.DOM.li({className: "tweet" + (tweet.active ? ' active' : '')}, 
@@ -89,7 +92,7 @@ module.exports = Tweets = React.createClass({displayName: 'Tweets',
 
   // Render our tweets
   render: function(){
-
+    console.log('rendering', tweets)
     // Build list items of single tweet components using map
     var content = this.props.tweets.map(function(tweet){
       return (

@@ -4,6 +4,7 @@ var React = require('react');
 
 module.exports = Tweet = React.createClass({
   render: function(){
+    console.log('rendering tweet', this.props);
     var tweet = this.props.tweet;
     return (
       <li className={"tweet" + (tweet.active ? ' active' : '')}>

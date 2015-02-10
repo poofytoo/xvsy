@@ -31,8 +31,9 @@ module.exports = TweetsApp = React.createClass({
 
   // Render the component
   render: function(){
+    console.log('rendering', tweets)
     return (
-      <div className="tweets-app">
+      <div className="this.state.tweets">
         <Tweets tweets={this.state.tweets} />
       </div>
     )
